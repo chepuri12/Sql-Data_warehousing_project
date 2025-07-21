@@ -1,0 +1,112 @@
+CREATE TABLE bronze.crm_cust_info(
+cst_id INT,
+cst_key NVARCHAR(45),
+cst_firstname NVARCHAR(45),
+cst_lastname NVARCHAR(45),
+cst_marital_status NVARCHAR(45),
+cst_gndr NVARCHAR(45),
+cst_create_date DATE
+);
+
+CREATE TABLE bronze.crm_prd_info(
+prd_id	INT,
+prd_key	NVARCHAR(45),
+prd_nm	NVARCHAR(45),
+prd_cost INT,	
+prd_line	NVARCHAR(45),
+prd_start_dt DATETIME,	
+prd_end_dt  DATETIME
+
+);
+CREATE TABLE bronze.crm_sales_details(
+sls_ord_num	NVARCHAR(45),
+sls_prd_key	NVARCHAR(45),
+sls_cust_id	 INT,
+sls_order_dt INT,	
+sls_ship_dt	INT,
+sls_due_dt	INT,
+sls_sales	INT,
+sls_quantity INT,	
+sls_price INT,
+);
+
+CREATE TABLE bronze.erp_cust_az12 (
+cid	NVARCHAR(45),
+bdate	DATE,
+gen NVARCHAR(45)
+) ;
+
+CREATE TABLE bronze.erp_loc_a101(
+cid	NVARCHAR(45),
+cntry NVARCHAR(45)
+
+);
+
+CREATE TABLE bronze.erp_px_cat_g1v2(
+id  NVARCHAR(45),
+cat NVARCHAR(45),
+subcat NVARCHAR(45),
+maintenance NVARCHAR(45)
+)
+###### INSERTING THE DATA IN BULK############################# 
+
+BULK INSERT bronze.crm_cust_info
+FROM 'C:\Users\chepu\Downloads\sql-data-analytics-project\sql-data-analytics-project\datasets\csv-files\bronze.crm_cust_info.csv'
+WITH (
+    FORMAT = 'CSV',
+    FIRSTROW = 2,
+    FIELDTERMINATOR = ',',
+    ROWTERMINATOR = '\n'
+);
+select * from bronze.crm_cust_info
+
+BULK INSERT bronze.crm_prd_info
+FROM 'C:\Users\chepu\Downloads\sql-data-analytics-project\sql-data-analytics-project\datasets\csv-files\bronze.crm_prd_info.csv'
+WITH (
+    FORMAT = 'CSV',
+    FIRSTROW = 2,
+    FIELDTERMINATOR = ',',
+    ROWTERMINATOR = '\n'
+);
+
+BULK INSERT bronze.crm_sales_details
+FROM 'C:\Users\chepu\Downloads\sql-data-analytics-project\sql-data-analytics-project\datasets\csv-files\bronze.crm_sales_details.csv'
+WITH (
+    FORMAT = 'CSV',
+    FIRSTROW = 2,
+    FIELDTERMINATOR = ',',
+    ROWTERMINATOR = '\n'
+);
+BULK INSERT bronze.erp_cust_az12
+FROM 'C:\Users\chepu\Downloads\sql-data-analytics-project\sql-data-analytics-project\datasets\csv-files\bronze.erp_cust_az12.csv'
+WITH (
+    FORMAT = 'CSV',
+    FIRSTROW = 2,
+    FIELDTERMINATOR = ',',
+    ROWTERMINATOR = '\n'
+);
+BULK INSERT bronze.erp_cust_az12
+FROM 'C:\Users\chepu\Downloads\sql-data-analytics-project\sql-data-analytics-project\datasets\csv-files\bronze.erp_cust_az12.csv'
+WITH (
+    FORMAT = 'CSV',
+    FIRSTROW = 2,
+    FIELDTERMINATOR = ',',
+    ROWTERMINATOR = '\n'
+);
+BULK INSERT bronze.erp_loc_a101
+FROM 'C:\Users\chepu\Downloads\sql-data-analytics-project\sql-data-analytics-project\datasets\csv-files\bronze.erp_loc_a101.csv'
+WITH (
+    FORMAT = 'CSV',
+    FIRSTROW = 2,
+    FIELDTERMINATOR = ',',
+    ROWTERMINATOR = '\n'
+);
+
+BULK INSERT bronze.erp_px_cat_g1v2
+FROM 'C:\Users\chepu\Downloads\sql-data-analytics-project\sql-data-analytics-project\datasets\csv-files\bronze.erp_px_cat_g1v2.csv'
+WITH (
+    FORMAT = 'CSV',
+    FIRSTROW = 2,
+    FIELDTERMINATOR = ',',
+    ROWTERMINATOR = '\n'
+);
